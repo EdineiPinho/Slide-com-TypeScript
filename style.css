@@ -9,10 +9,28 @@ body {
   margin: 20px;
 }
 
+body.paused {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  touch-action: manipulation;
+}
+
 img,
 video {
   display: block;
   max-width: 100%;
+}
+
+#slide {
+  display: grid;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 20px auto;
+  max-width: 800px;
+  background: black;
 }
 
 h1 {
@@ -67,15 +85,21 @@ h1 {
   background: rgba(255, 255, 255, .2);
   margin: 5px;
   border-radius: 4px;
+  overflow: hidden;
+  isolation: isolate;
 }
 
-#slide-thumb .thumb-item {
+#slide-thumb .thumb-item.active {
   display: block;
   height: inherit;
   background: rgba(255, 255, 255, .9);
   border-radius: 4px;
   transform: translateX(-100%);
-  animation: thumb 3s forwards linear running;
+  animation: thumb forwards linear running;
+}
+
+#slide-thumb .thumb-item.paused {
+  animation-play-state: paused;
 }
 
 @keyframes thumb {
